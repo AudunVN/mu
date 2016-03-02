@@ -12,4 +12,6 @@ Required features:
 - Keyboard hotkeys
 - Shuffle
 - Drag-and-drop playlist order management (not critical; move [up|down] buttons work too)
+  - Datatables provide an easy way to add this, actually. Should be simple enough.
 - Drag-and-drop to add files to playlist
+- Display file metadata
