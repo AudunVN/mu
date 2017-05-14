@@ -482,6 +482,7 @@ new jsmediatags.Reader(sounds[currentSongIndex])
       if (error.type === "xhr") {
         console.log("There was a network error: ", error.xhr);
       }
+	    document.querySelector(".nowPlaying").innerText = sounds[currentSongIndex].name;
 		 console.log(error);
     }
   });
