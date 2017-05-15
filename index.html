@@ -662,7 +662,7 @@ input.onchange = function(e){
 		}
 	}
 	for (localSoundIndex in newSounds) {
-		var soundIndex = localSoundIndex + sounds.length;
+		var soundIndex = parseInt(localSoundIndex) + parseInt(sounds.length);
 		var sound = newSounds[localSoundIndex];
 		var title = document.createElement("p");
 		var titleText = document.createTextNode(sound.name);
