@@ -651,22 +651,24 @@ document.querySelector(".prevButton").addEventListener("click", function(){
 });
 
 input.onchange = function(e){
+	var newSounds = [];
 	for (file in this.files) {
 		var file = this.files[file];
 		console.log(this.files);
 		console.log(file);
 		console.log(file.type);
 		if ((file.type) != undefined && document.querySelector("audio").canPlayType(file.type) != "") {
-			sounds.push(file);
+			newSounds.push(file);
 		}
 	}
-	for (soundIndex in sounds) {
-		var sound = sounds[soundIndex];
+	for (localSoundIndex in newSounds) {
+		var soundIndex = localSoundIndex + sounds.length;
+		var sound = newSounds[soundIndex];
 		var title = document.createElement("p");
 		var titleText = document.createTextNode(sound.name);
 		title.appendChild(titleText);
 		
-	   console.log(sounds);
+	   console.log(newSounds);
 	 	document.querySelector("body").appendChild(title);
 		console.log(soundIndex);
 		title.dataset.soundIndex = soundIndex;
@@ -682,6 +684,7 @@ input.onchange = function(e){
 			playCurrentSong();
 		});
 	}
+	sounds.push(newSounds);
 }
 
 	var context = new AudioContext();
