@@ -674,9 +674,6 @@ input.onchange = function(e){
 		console.log(soundIndex);
 		title.dataset.soundIndex = soundIndex;
 		setTags(sound, soundIndex);
-		currentSongIndex = 0;
-		playCurrentSong();
-		document.querySelector("audio").pause();
 		
 	   title.addEventListener("click", function(){
 			console.log(sound);
