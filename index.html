@@ -584,21 +584,44 @@ document.addEventListener("DOMContentLoaded", function(e) {
 			document.querySelector(".audioPlayer .progress.bar .fileLength").innerHTML = Math.floor(src.duration) + "s";
 		});
 	
+	function playNextSong() {
+		console.log(currentSongIndex);
+		if (currentSongIndex != -1) {
+			currentSongIndex = parseInt(currentSongIndex) + 1
+			if (currentSongIndex > sounds.length) {
+				currentSongIndex = 0;
+			}
+			playCurrentSong();
+		}
+	}
+	
+	function playPrevSong() {
+		console.log(currentSongIndex);
+		if (currentSongIndex != -1) {
+			currentSongIndex = parseInt(currentSongIndex) - 1
+			if (currentSongIndex < 0) {
+				currentSongIndex = sounds.length;
+			}
+			playCurrentSong();
+		}
+	}
+	
+$("body").bind("keyup",function(event){
+	console.log("button pressed: "+event.keyCode);
+	if (event.keyCode == 176) {
+		playNextSong();
+	} else if (event.keyCode == 177) {
+		playPrevSong();
+	} else if (event.keyCode == 179) {
+		$(".playPause").click();
+	}
+})
+	
 document.querySelector(".nextButton").addEventListener("click", function(){
-	  console.log(currentSongIndex);
-	  if (currentSongIndex != -1) {
-		  currentSongIndex = (parseInt(currentSongIndex) + 1)  % sounds.length;
-		  console.log(currentSongIndex);
-		  playCurrentSong();
-	  }
+	  playNextSong();
   });
 document.querySelector(".prevButton").addEventListener("click", function(){
-	  console.log(currentSongIndex);
-	  if (currentSongIndex != -1) {
-		  currentSongIndex = (parseInt(currentSongIndex) - 1)  % sounds.length;
-		  console.log(currentSongIndex);
-		  playCurrentSong();
-	  }
+	  playPrevSong();
   }); 
 
 		$(".audioPlayer .volume.bar").mousedown(function(e) {
