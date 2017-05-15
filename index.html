@@ -682,7 +682,7 @@ input.onchange = function(e){
 			playCurrentSong();
 		});
 	}
-	sounds.push(newSounds);
+	sounds.concat(newSounds);
 }
 
 	var context = new AudioContext();
