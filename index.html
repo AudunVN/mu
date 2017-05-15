@@ -663,7 +663,7 @@ input.onchange = function(e){
 	}
 	for (localSoundIndex in newSounds) {
 		var soundIndex = localSoundIndex + sounds.length;
-		var sound = newSounds[soundIndex];
+		var sound = newSounds[localSoundIndex];
 		var title = document.createElement("p");
 		var titleText = document.createTextNode(sound.name);
 		title.appendChild(titleText);
