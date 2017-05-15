@@ -450,6 +450,7 @@ e,g=h+g.length-1;d[0]=Math.min(h,d[0]);d[1]=Math.max(g,d[1])}a.loadRange(d,c)}}}
 var jsmediatags = window.jsmediatags;
 
 var sounds = [];
+var newSounds = [];
 var currentSongIndex = -1;
 
 function setTags(sound, soundIndex) {
@@ -651,7 +652,7 @@ document.querySelector(".prevButton").addEventListener("click", function(){
 });
 
 input.onchange = function(e){
-	var newSounds = [];
+	newSounds = [];
 	for (file in this.files) {
 		var file = this.files[file];
 		console.log(this.files);
