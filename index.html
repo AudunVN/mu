@@ -567,7 +567,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
 		icon.click(function() {
 			player.toggleClass("paused");
 			if (src.paused) {
-				src.play();
+				if (document.querySelector("audio").readyState != 4) {
+					playCurrentSong();
+				} else {
+					src.play();
+				}
 			} else {
 				src.pause();
 			}
@@ -613,7 +617,11 @@ $("body").bind("keyup",function(event){
 	} else if (event.keyCode == 177) {
 		playPrevSong();
 	} else if (event.keyCode == 179) {
-		$(".playPause").click();
+		if (!document.querySelector("audio").paused) {
+			$(".playPause").click();
+		} else {
+			playCurrentSong();
+		}
 	}
 });
 	
@@ -664,6 +672,8 @@ input.onchange = function(e){
 		title.dataset.soundIndex = soundIndex;
 		setTags(sound, soundIndex);
 		currentSongIndex = 0;
+		playCurrentSong();
+		
 	   title.addEventListener("click", function(){
 			console.log(sound);
 			console.log(soundIndex);
